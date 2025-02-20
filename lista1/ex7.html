@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="js/ex7.js"></script>
+  </head>
+  <body>
+    <label for="produtos">Escolha um produto: </label>
+    <input type="radio" name="produtos" id="produto1" value="100" />Chocolate
+    R$100 <input type="radio" name="produtos" id="produto2" value="180" />Pizza
+    R$180 <input type="radio" name="produtos" id="produto3" value="220" />Bolo
+    de Morango R$220<br /><br />
+    <label for="descontos">Escolha um desconto: </label>
+    <input type="radio" name="descontos" id="desconto1" value="10" />10% de
+    Desconto
+    <input type="radio" name="descontos" id="desconto2" value="15" />15% de
+    Desconto
+    <input type="radio" name="descontos" id="desconto3" value="25" />25% de
+    Desconto
+
+    <button onclick="CalculaPreco()">Preço final</button>
+    <p id="resultado"></p>
+  </body>
+</html>
