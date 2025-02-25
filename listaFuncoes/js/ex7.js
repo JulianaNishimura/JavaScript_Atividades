@@ -23,7 +23,9 @@ function verificarElementos() {
     );
     let quantidade = parseInt(quantidadeElemento.value);
 
-    let resultado = calcularNumero(categoriaValor, quantidade, valorTotal);
-    saida.textContent = `O valor total de ${quantidade} unidades é igual a R$ ${resultado}`;
+    if (!isNaN(quantidade) && !isNaN(categoriaValor)) {
+      let resultado = calcularNumero(categoriaValor, quantidade, valorTotal);
+      saida.textContent = `O valor total de ${quantidade} unidades é igual a R$ ${resultado}`;
+    }
   }
 }

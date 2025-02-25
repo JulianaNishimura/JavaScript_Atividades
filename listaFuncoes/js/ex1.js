@@ -1,3 +1,13 @@
+function qualOperacao(callback, a, b) {
+  const funcao = {
+    soma: soma,
+    subtracao: subtracao,
+    multiplicacao: multiplicacao,
+    divisao: divisao,
+  };
+  return funcao[callback](a, b);
+}
+
 let soma = function (a, b) {
   return a + b;
 };
@@ -24,7 +34,6 @@ function calcular() {
   let elementoOperacao = document.querySelector(
     'input[name="operacoes"]:checked'
   );
-  let resultado;
 
   if (
     elementoNumero1 instanceof HTMLInputElement &&
@@ -35,17 +44,10 @@ function calcular() {
     let num2 = parseFloat(elementoNumero2.value);
     let operacao = elementoOperacao.value;
 
-    if (operacao === 'soma') {
-      resultado = soma(num1, num2);
-    } else if (operacao === 'subtracao') {
-      resultado = subtracao(num1, num2);
-    } else if (operacao === 'multiplicacao') {
-      resultado = multiplicacao(num1, num2);
-    } else {
-      resultado = divisao(num1, num2);
+    if (!isNaN(num1) && !isNaN(num2)) {
+      let resultado = qualOperacao(operacao, num1, num2);
+      escreveResultado(resultado);
     }
-
-    escreveResultado(resultado);
   }
 }
 
