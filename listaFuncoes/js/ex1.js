@@ -11,7 +11,11 @@ let multiplicacao = function (a, b) {
 };
 
 let divisao = function (a, b) {
-  return a / b;
+  if (b !== 0) {
+    return a / b;
+  } else {
+    return 'Operação inválida';
+  }
 };
 
 function calcular() {

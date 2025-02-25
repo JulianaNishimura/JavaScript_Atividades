@@ -1,40 +1,20 @@
+function escolheCalculo(nome) {
+  return nome();
+}
+
 function calculaArea() {
   let figuraElemento = document.getElementById('figura');
   let saida = document.getElementById('resultado');
-  let textoSaida;
   if (figuraElemento instanceof HTMLSelectElement && saida != null) {
     let figura = figuraElemento.options[figuraElemento.selectedIndex].value;
-    if (figura === 'quadrado') {
-      textoSaida = quadradoElemento();
-    } else if (figura === 'retangulo') {
-      textoSaida = retangulo();
-    } else if (figura === 'trapezio') {
-      textoSaida = trapezio();
-    } else if (figura === 'triangulo') {
-      textoSaida = triangulo();
-    } else if (figura === 'circulo') {
-      textoSaida = circulo();
-    } else {
-      textoSaida = 'Por favor, escolha uma figura válida';
-    }
-
+    let textoSaida = escolheCalculo(figura);
     saida.textContent = textoSaida;
   }
 }
 
-function quadradoElemento() {
-  let pedeInfo = document.createElement('label');
-  let infoEntrada = document.createElement('input');
-  pedeInfo.innerText = 'Escreva o lado: ';
-  infoEntrada.id = 'lado';
-  document.body.appendChild(pedeInfo);
-  document.body.appendChild(infoEntrada);
-  
-}
-
 function quadrado() {
-  let valorElemento = document.getElementById('lado');
-  let res = parseFloat(valorElemento.value) ** 2;
+  let lado = parseFloat(prompt('Qual é o lado?'));
+  let res = lado ** 2;
   return res;
 }
 
@@ -62,6 +42,6 @@ function triangulo() {
 
 function circulo() {
   let raio = parseFloat(prompt('Qual o raio?'));
-  let res = ((raio ** 2) * Math.PI).toFixed(2);
+  let res = (raio ** 2 * Math.PI).toFixed(2);
   return res;
 }
