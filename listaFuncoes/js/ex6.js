@@ -1,5 +1,12 @@
 function escolheCalculo(nome) {
-  return nome();
+  const funcoes = {
+    quadrado: quadrado,
+    retangulo: retangulo,
+    trapezio: trapezio,
+    triangulo: triangulo,
+    circulo: circulo,
+  };
+  return funcoes[nome]();
 }
 
 function calculaArea() {
