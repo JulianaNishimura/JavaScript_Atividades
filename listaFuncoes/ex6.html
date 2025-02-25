@@ -7,9 +7,15 @@
     <script src="js/ex6.js"></script>
   </head>
   <body>
-    <label for="numero">Digite um numero: </label>
-    <input type="number" name="numero" id="numero" />
-    <button onclick="exibeResultado()">Inverter</button>
+    <label for="figura">Digite um numero: </label>
+    <select name="figura" id="figura">
+      <option value="quadrado">Quadrado</option>
+      <option value="retangulo">Retângulo</option>
+      <option value="trapezio">Trapézio</option>
+      <option value="triangulo">Triângulo</option>
+      <option value="circulo">Círculo</option>
+    </select>
+    <button onclick="calculaArea()">Calcular área</button>
     <p id="resultado"></p>
   </body>
 </html>

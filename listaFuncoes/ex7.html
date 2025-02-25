@@ -7,9 +7,16 @@
     <script src="js/ex7.js"></script>
   </head>
   <body>
-    <label for="numero">Digite um numero: </label>
-    <input type="number" name="numero" id="numero" />
-    <button onclick="exibeResultado()">Inverter</button>
+    <label for="categoria">Escolha um produto:</label>
+    <select name="categoria" id="categoria">
+      <option value="10">Jornais - R$10 unitário</option>
+      <option value="20">Livros - R$20 unitário</option>
+      <option value="30">Revistas - R$30 unitário</option>
+      <option value="40">Discos - R$40 unitário</option>
+    </select>
+    <label for="quantidade">Qual a quantidade a ser comprada do item?</label>
+    <input type="number" name="quantidade" id="quantidade" />
+    <button onclick="verificarElementos()">Calcular Total</button>
     <p id="resultado"></p>
   </body>
 </html>
