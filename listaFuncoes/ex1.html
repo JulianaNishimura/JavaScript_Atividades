@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="js/ex1.js"></script>
+  </head>
+  <body>
+    <label for="operacoes">Selecione uma operação: </label>
+    <input type="radio" name="operacoes" id="operacao1" value="soma" />Soma
+    <input
+      type="radio"
+      name="operacoes"
+      id="operacao2"
+      value="subtracao"
+    />Subtração
+    <input
+      type="radio"
+      name="operacoes"
+      id="operacao3"
+      value="multiplicacao"
+    />Multiplicação
+    <input
+      type="radio"
+      name="operacoes"
+      id="operacao4"
+      value="divisao"
+    />Divisão
+    <label for="numero">Digite o primeiro número: </label>
+    <input type="number" name="numero" id="numero1" />
+    <label for="numero">Digite o segundo número: </label>
+    <input type="number" name="numero" id="numero2" />
+    <button onclick="calcular()">Calcular</button>
+    <p id="resultado"></p>
+  </body>
+</html>
