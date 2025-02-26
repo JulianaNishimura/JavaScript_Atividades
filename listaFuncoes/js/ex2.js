@@ -1,9 +1,11 @@
 const raiz = function (n) {
+  console.log(Math.sqrt(n));
   return Math.sqrt(n);
 };
 
 const exponencial = function (n) {
-  return Math.exp(n);
+  console.log(Math.exp(n));
+  return Math.exp(n).toFixed(3);
 };
 
 function chamaFuncao(n, callback) {
@@ -11,12 +13,13 @@ function chamaFuncao(n, callback) {
     raiz: raiz,
     exponencial: exponencial,
   };
+  console.log(n, callback);
   return funcao[callback](n);
 }
 
 function raizEexponencial() {
-  let numeroElemento = document.getElementById('num');
-  let operacaoElemento = document.getElementById('operacao');
+  let numeroElemento = document.getElementById('numero');
+  let operacaoElemento = document.getElementById('operacoes');
   let saida = document.getElementById('resultado');
   if (
     numeroElemento instanceof HTMLInputElement &&
@@ -24,9 +27,14 @@ function raizEexponencial() {
     saida != null
   ) {
     let numero = parseFloat(numeroElemento.value);
-    let operacao =
-      operacaoElemento.options[operacaoElemento.selectedIndex].value;
-    let texto = chamaFuncao(numero, operacao);
-    saida.textContent = `O resultado é: ${texto}`;
+    if (!isNaN(numero)) {
+      let operacao =
+        operacaoElemento.options[operacaoElemento.selectedIndex].value;
+
+      console.log(operacao, numero);
+      let texto = chamaFuncao(numero, operacao);
+      console.log(texto);
+      saida.textContent = `O resultado é: ${texto}`;
+    }
   }
 }
