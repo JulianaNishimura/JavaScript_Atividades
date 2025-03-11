@@ -3,7 +3,7 @@ let array = [];
 function adicionarItem(tarefa, itemParagrafo) {
   if (tarefa != null) {
     array.push(tarefa);
-    itemParagrafo = array.join(', ');
+    itemParagrafo.textContent = array.join(', ');
   }
 }
 
@@ -22,7 +22,6 @@ const configurarEventoDeTarefas = () => {
   let botaoAdicionar = document.getElementById('adicionarBtn');
   let botaoRemover = document.getElementById('removerBtn');
   let itemParagrafo = document.getElementById('item');
-
   if (
     botaoAdicionar instanceof HTMLButtonElement &&
     botaoRemover instanceof HTMLButtonElement &&
