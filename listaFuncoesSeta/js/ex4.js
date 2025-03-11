@@ -1,17 +1,17 @@
 const configurarEventoQuadrado = () => {
-    let numeroElemento = document.getElementById('numero');
-    let exibirBtn = document.getElementById('exibirBtn');
-    if (exibirBtn) {
-      exibirBtn.addEventListener('click', () => {
-        cliqueNoBotao(numeroElemento);
-      });
-    }
-}
+  let numeroElemento = document.getElementById('numero');
+  let exibirBtn = document.getElementById('exibirBtn');
+  if (exibirBtn) {
+    exibirBtn.addEventListener('click', () => {
+      cliqueNoBotao(numeroElemento);
+    });
+  }
+};
 
 const cliqueNoBotao = (numeroElemento) => {
   if (numeroElemento instanceof HTMLInputElement) {
     let num = parseFloat(numeroElemento.value);
-    aplicarOperacao(num,calcularQuadrado);
+    aplicarOperacao(num, calcularQuadrado);
   }
 };
 
@@ -23,9 +23,8 @@ const calcularQuadrado = (numero) => {
   }
 };
 
-const aplicarOperacao = (numero, calcularQuadrado) => {
-  calcularQuadrado(numero);
+const aplicarOperacao = (numero, funcao) => {
+  funcao(numero);
 };
 
 document.addEventListener('DOMContentLoaded', configurarEventoQuadrado);
-

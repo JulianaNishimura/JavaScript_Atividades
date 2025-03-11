@@ -15,11 +15,14 @@ const cliqueNoBotao = (precoElemento, descontoElemento) => {
     descontoElemento instanceof HTMLInputElement
   ) {
     let preco = parseFloat(precoElemento.value);
-    let desconto = parseFloat(descontoElemento.value) / 100;
-    if (isNaN(desconto) || desconto === '') {
-      desconto = 0.1;
+    let desconto = descontoElemento.value;
+    let valorDesconto;
+    if (desconto === '') {
+      valorDesconto = 0.1;
+    } else {
+      valorDesconto = parseFloat(desconto) / 100;
     }
-    calculaTotal(preco, desconto);
+    calculaTotal(preco, valorDesconto);
   }
 };
 
