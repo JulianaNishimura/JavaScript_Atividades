@@ -1,7 +1,7 @@
 let array = [];
 
 function adicionarItem(tarefa, itemParagrafo) {
-  if (tarefa != null) {
+  if (tarefa != null && tarefa.trim() !== '') {
     array.push(tarefa);
     itemParagrafo.textContent = array.join(', ');
   }
