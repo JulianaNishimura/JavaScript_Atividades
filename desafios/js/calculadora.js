@@ -1,0 +1,7 @@
+const processar = () => {
+    
+};
+
+const processarBotoesEspeciais = () => {
+
+};
