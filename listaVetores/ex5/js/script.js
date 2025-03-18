@@ -1,4 +1,4 @@
-const frutas = ['Abacate','Pera','Maçã','Laranja']
+const frutas = ['Abacate','Pera','Maca','Laranja']
 
 function exibirConteudo(fruta){
     let saida = document.getElementById('resultado');
