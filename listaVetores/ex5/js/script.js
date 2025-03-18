@@ -22,9 +22,11 @@ function configurarFruta(){
     let escolhaFrut = document.getElementById('frutas');
 
     if (escolhaFrut instanceof HTMLSelectElement && frutaBtn instanceof HTMLButtonElement) {
-      let i = escolhaFrut.selectedIndex;
-      let fruta = escolhaFrut.options[i].value;
-      exibirConteudo(fruta);
+        frutaBtn.addEventListener('click',() =>{
+            let i = escolhaFrut.selectedIndex;
+            let fruta = escolhaFrut.options[i].value;
+            exibirConteudo(fruta);
+        })
     }
 }
 
