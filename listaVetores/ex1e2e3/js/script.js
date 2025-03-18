@@ -2,11 +2,11 @@ const arrayTarefas = [];
 
 function cadastrarTarefa(entradaTarefa) {
   if (entradaTarefa) {
-    if (arrayTarefas.includes(entradaTarefa.toLowerCase())){
-      alert("A tarefa já existe, tente outra.")
-    } else {
+    if (!arrayTarefas.includes(entradaTarefa.toLowerCase())){
       arrayTarefas.push(entradaTarefa.toLowerCase());
       exibirConteudo();
+    } else {
+      alert("A tarefa já existe, tente outra.");
     }
   } else {
     alert('Por favor, insira um valor válido.');
@@ -15,7 +15,11 @@ function cadastrarTarefa(entradaTarefa) {
 
 function exibirConteudo() {
   let saida = document.getElementById('resultado');
-  if (saida instanceof HTMLParagraphElement) {
+  if (saida instanceof HTMLDivElement) {
+    while(saida.firstChild){
+      saida.removeChild(saida.firstChild);
+    }
+
     arrayTarefas.forEach(function(item) {
       saida.appendChild(lista(item));
     });
@@ -24,8 +28,7 @@ function exibirConteudo() {
 
 function lista(item) {
   let itemLista = document.createElement('li');
-  let texto = document.createTextNode(item);
-  itemLista.appendChild(texto);
+  itemLista.textContent = item;
   return itemLista;
 }
 
