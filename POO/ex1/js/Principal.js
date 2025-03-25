@@ -33,6 +33,10 @@ export class Principal {
     #exibirConteudo(){
         let notasAdicionadas = document.getElementById('notasAdicionadas');
         let resultado = document.getElementById('resultado');
+
+        if(notasAdicionadas instanceof HTMLParagraphElement && resultado instanceof HTMLParagraphElement){
+            
+        }
     }
 }
 
