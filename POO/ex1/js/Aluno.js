@@ -1,10 +1,10 @@
 class Aluno{
-    #nome
+    #nome;
     #notas = [];
 
     constructor(nome,notas = []){
         this.#nome = nome;
-        if(this.validarNotas(notas)){
+        if(this.#validarNotas(notas)){
             this.#notas = notas;
         }
     }
@@ -22,30 +22,31 @@ class Aluno{
     }
 
     set notas(notas){
-        if(this.validarNotas(notas)){
+        if(this.#validarNotas(notas)){
             this.#notas = notas;
         }
     }
 
-    validarNotas(notas){
-        let notasValidas = notas.every((value) => {return value <= 10 && value >= 0})
+    #validarNotas(notas){
+        let notasValidas = notas.every((value) => {return value <= 10 && value >= 0});
         if(!notasValidas){
-            alert(`Nota inválida! Tem que ser um número entre 0 e 10.`)
+            alert(`Nota inválida! Tem que ser um número entre 0 e 10.`);
             return false;
         } else {
             return true;
         }
     }
 
-    calcularMedia(){
-        let soma = 0;
-        this.#notas.forEach(nota => {
-            soma += nota;
-        });
-        return (soma/3).toFixed(2);
+    calcularMedia(notas){
+        if(this.#notas.length === 0){
+            alert("Não é possível dividir por 0.")
+        } else {
+            let somaDeNotas = notas.reduce((acumulador,atual) => acumulador + atual,0);
+            return (somaDeNotas/this.#notas.length).toFixed(2);
+        }
     }
 
     toString(){
-        return `Nome: ${this.#nome}, Notas: ${notas}`
+        return `Nome: ${this.#nome}, Notas: ${this.#notas.join(', s')}`;
     }
 }
