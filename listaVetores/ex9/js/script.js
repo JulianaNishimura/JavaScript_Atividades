@@ -57,7 +57,7 @@ function configurarEventos() {
     .addEventListener('click', filtrarReprovados);
   document
     .getElementById('todosAlunos')
-    .addEventListener('click', () => exibir(mediasAlunos));
+    .addEventListener('click', () => exibir(mediasAlunos, 'Alunos'));
 }
 
 document.addEventListener('DOMContentLoaded', configurarEventos);
