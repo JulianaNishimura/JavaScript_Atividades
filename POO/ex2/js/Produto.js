@@ -59,6 +59,6 @@ export default class Produto {
     }
 
     toString(){
-        return `Nome do produto: ${this.#nome}, Preço do produto: ${this.#preco_unitario}, Quantidade: ${this.#quantidade}`
+        return `Nome do produto: ${this.#nome} |  Preço do produto: ${this.#preco_unitario} |  Quantidade: ${this.#quantidade} | `
     }
 }

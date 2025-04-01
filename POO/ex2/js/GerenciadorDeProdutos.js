@@ -118,17 +118,12 @@ export class GerenciadordeProdutos {
         this.#produtos.forEach(produto => {
             const div = document.createElement('div');
             div.className = 'produto-item';
-            div.innerHTML = `
-                Nome: ${produto.nome} | 
-                Quantidade: ${produto.quantidade} | 
-                Preço Unitário: R$ ${produto.preco_unitario} | 
-                Total: R$ ${produto.valorTotalDoProduto()}
-            `;
+            div.textContent = `${produto.toString()}Total: R$ ${produto.valorTotalDoProduto()}`;
             produtosDiv.appendChild(div);
         });
         
         const valorTotalEstoque = this.calcularEstoque();
-        totalDiv.innerHTML = `<strong>Valor Total do Estoque: R$ ${valorTotalEstoque}</strong>`;
+        totalDiv.textContent = `Valor Total do Estoque: R$ ${valorTotalEstoque}`;
         this.limparConteudo();
     }
 
