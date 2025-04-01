@@ -58,67 +58,67 @@ export class Principal {
         }
         return true;
     }
-    acrescentarNota(notaInput) {
-        //if (alunoInicializado === false) {
-        //simplificação
-        //prettier-ignore
-        if (!this.inicializarAluno()) 
-          return;
-    
-        let nota = Number(notaInput.value);
-        //prettier-ignore
-        if ((!isNaN(nota)) && (nota >= 0) && (nota <= 10)) {
-          this.aluno.adicionarNota(nota); 
-          notaInput.value = ''; 
-          this.exibirNotas();
-        } else {
-          alert('Digite uma nota válida entre 0 e 10.');
-        }
-      }
-    
-      exibirMedia() {
-        let resultado = document.getElementById('resultado');
-    
-        if (!this.aluno) {
-          alert('Nenhum aluno foi inicializado.');
-          return;
-        }
-        if (resultado instanceof HTMLParagraphElement) {
-          let media = Number(this.aluno.calcularMedia());
-          resultado.textContent = `Aluno: ${this.aluno.nome}, Média: ${media}`;
-        }
-      }
-    
-      exibirNotas() {
-        let notasAdicionadas = document.getElementById('notasAdicionadas');
-    
-        if (!this.aluno) {
-          alert('Nenhum aluno foi inicializado.');
-          return;
-        }
-        if (notasAdicionadas instanceof HTMLParagraphElement) {
-          //prettier-ignore
-          notasAdicionadas.textContent = `Notas adicionadas: ${this.aluno.notas.join(', ')}`;
-        }
-      }
-    
-      // Método para limpar conteúdo
-      limparConteudo() {
-        let notasAdicionadas = document.getElementById('notasAdicionadas');
-        let resultado = document.getElementById('resultado');
-        let nomeInput = document.getElementById('nome');
-    
-        //prettier-ignore
-        if ((notasAdicionadas instanceof HTMLParagraphElement) && (resultado instanceof HTMLParagraphElement) && (nomeInput instanceof HTMLInputElement)) {
-          notasAdicionadas.textContent = '';
-          resultado.textContent = '';
-          nomeInput.value = '';
-        }
-        this.aluno = null;
-      }
+acrescentarNota(notaInput) {
+    //if (alunoInicializado === false) {
+    //simplificação
+    //prettier-ignore
+    if (!this.inicializarAluno()) 
+      return;
+
+    let nota = Number(notaInput.value);
+    //prettier-ignore
+    if ((!isNaN(nota)) && (nota >= 0) && (nota <= 10)) {
+      this.aluno.adicionarNota(nota); 
+      notaInput.value = ''; 
+      this.exibirNotas();
+    } else {
+      alert('Digite uma nota válida entre 0 e 10.');
     }
-    
-    // Inicializar o Gerenciador ao carregar o DOM
-    document.addEventListener('DOMContentLoaded', () => {
-      new GerenciadorDeAlunos();
-    });
+  }
+
+  exibirMedia() {
+    let resultado = document.getElementById('resultado');
+
+    if (!this.aluno) {
+      alert('Nenhum aluno foi inicializado.');
+      return;
+    }
+    if (resultado instanceof HTMLParagraphElement) {
+      let media = Number(this.aluno.calcularMedia());
+      resultado.textContent = `Aluno: ${this.aluno.nome}, Média: ${media}`;
+    }
+  }
+
+  exibirNotas() {
+    let notasAdicionadas = document.getElementById('notasAdicionadas');
+
+    if (!this.aluno) {
+      alert('Nenhum aluno foi inicializado.');
+      return;
+    }
+    if (notasAdicionadas instanceof HTMLParagraphElement) {
+      //prettier-ignore
+      notasAdicionadas.textContent = `Notas adicionadas: ${this.aluno.notas.join(', ')}`;
+    }
+  }
+
+  // Método para limpar conteúdo
+  limparConteudo() {
+    let notasAdicionadas = document.getElementById('notasAdicionadas');
+    let resultado = document.getElementById('resultado');
+    let nomeInput = document.getElementById('nome');
+
+    //prettier-ignore
+    if ((notasAdicionadas instanceof HTMLParagraphElement) && (resultado instanceof HTMLParagraphElement) && (nomeInput instanceof HTMLInputElement)) {
+      notasAdicionadas.textContent = '';
+      resultado.textContent = '';
+      nomeInput.value = '';
+    }
+    this.aluno = null;
+  }
+}
+
+// Inicializar o Gerenciador ao carregar o DOM
+document.addEventListener('DOMContentLoaded', () => {
+  new GerenciadorDeAlunos();
+});
