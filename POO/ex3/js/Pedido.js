@@ -13,4 +13,8 @@ export default class Pedido{
         this.#itens = itens;
     }
 
+    toString(){
+        return `itens: ${this.#itens}`
+    }
+
 }

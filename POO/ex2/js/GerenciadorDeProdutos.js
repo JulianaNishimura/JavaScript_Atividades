@@ -36,6 +36,23 @@ export class GerenciadordeProdutos {
         }
     }
 
+    removeProduto(){
+        let nomeRemoverInput = document.getElementById('nomeRemover');
+
+        if(nomeRemoverInput instanceof HTMLInputElement){
+            let nome = nomeRemoverInput.value.trim();
+
+            let indice = this.#produtos.findIndex((produto) => produto.nome === nome);
+            //filter, find, etc.
+            if (indice !== -1 && !isNaN(indice)) {
+                this.#produtos.splice(indice,1);
+                this.exibir();
+            } else {
+                alert("Produto não encontrado")
+            }
+        }
+    }
+
     adicionaQuantidade() {
         let nomeInputAtualiza = document.getElementById('nomeAtualizar');
         let nome = nomeInputAtualiza.value.trim();
@@ -77,7 +94,7 @@ export class GerenciadordeProdutos {
         }
     
         let quant = parseInt(prompt("Digite a quantidade a remover:"));
-        if (quant >= 0) {
+        if (quant >= 0 && quant <= produtoProcurando.quantidade) {
             produtoProcurando.removerQuantidade(quant);
             this.exibir();
         } else {
@@ -131,10 +148,11 @@ export class GerenciadordeProdutos {
         let cadastrarBtn = document.getElementById('cadastrar');
         let adicionarQuantidadeBtn = document.getElementById('AdicionarQuantidade');
         let removerQuantidadeBtn = document.getElementById('RemoverQuantidade');
+        let removerProdutoBtn = document.getElementById('removerProduto');
     
         //prettier-ignore
         if((cadastrarBtn instanceof HTMLButtonElement) && (adicionarQuantidadeBtn instanceof HTMLButtonElement) &&
-          (removerQuantidadeBtn instanceof HTMLButtonElement)) 
+          (removerQuantidadeBtn instanceof HTMLButtonElement) && removerProdutoBtn instanceof HTMLButtonElement) 
         {
             cadastrarBtn.addEventListener('click', () => {
             this.cadastrar();
@@ -146,6 +164,10 @@ export class GerenciadordeProdutos {
     
           removerQuantidadeBtn.addEventListener('click', () => {
             this.removeQuantidade();
+          });
+
+          removerProdutoBtn.addEventListener('click', () => {
+            this.removeProduto();
           });
         }
         console.log("configurou");
