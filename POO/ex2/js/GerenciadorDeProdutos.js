@@ -15,11 +15,17 @@ export class GerenciadordeProdutos {
         let precoInput = document.getElementById('preco');
 
         if(nomeInput instanceof HTMLInputElement && quantidadeInput instanceof HTMLInputElement && precoInput instanceof HTMLInputElement){
-            let nome = nomeInput.value;
+            let nome = nomeInput.value.trim();
             let quantidade = parseInt(quantidadeInput.value);
             let preco = parseFloat(precoInput.value);
 
-            if(quantidade < 0 || preco < 0){
+            let produtoExistente = this.#produtos.find(prod => prod.nome === nome);
+            if (produtoExistente) {
+                alert("Já existe um produto cadastrado com este nome!");
+                return;
+            }
+
+            if (quantidade < 0 || preco < 0) {
                 alert("Por favor insira uma quantidade ou preço válido.");
             } else {
                 let produto = new Produto(nome, quantidade, preco);
@@ -31,23 +37,23 @@ export class GerenciadordeProdutos {
     }
 
     adicionaQuantidade() {
-        const nomeInput = document.getElementById('nomeAtualizar');
-        const nome = nomeInput.value;
+        let nomeInputAtualiza = document.getElementById('nomeAtualizar');
+        let nome = nomeInputAtualiza.value.trim();
     
         if (this.#produtos.length === 0) {
             alert("Nenhum produto cadastrado.");
             return;
         }
     
-        const produto = this.#produtos.find(p => p.nome === nome);
-        if (!produto) {
+        let produtoProcurando = this.#produtos.find(p => p.nome === nome);
+        if (!produtoProcurando) {
             alert("Produto não encontrado.");
             return;
         }
     
-        const quant = parseInt(prompt("Digite a quantidade a adicionar:"));
+        let quant = parseInt(prompt("Digite a quantidade a adicionar:"));
         if (quant >= 0) {
-            produto.adicionarQuantidade(quant);
+            produtoProcurando.adicionarQuantidade(quant);
             this.exibir();
         } else {
             alert("Digite uma quantidade válida");
@@ -55,24 +61,24 @@ export class GerenciadordeProdutos {
     }
     
     removeQuantidade() {
-        const nomeInput = document.getElementById('nomeAtualizar');
-        const nome = nomeInput.value;
+        let nomeInputAtualiza = document.getElementById('nomeAtualizar');
+        let nome = nomeInputAtualiza.value.trim();
     
         if (this.#produtos.length === 0) {
             alert("Nenhum produto cadastrado.");
             return;
         }
     
-        const produto = this.#produtos.find(p => p.nome === nome);
+        let produtoProcurando = this.#produtos.find(p => p.nome === nome);
         //filter, find, etc.
-        if (!produto) {
+        if (!produtoProcurando) {
             alert("Produto não encontrado.");
             return;
         }
     
-        const quant = parseInt(prompt("Digite a quantidade a remover:"));
+        let quant = parseInt(prompt("Digite a quantidade a remover:"));
         if (quant >= 0) {
-            produto.removerQuantidade(quant);
+            produtoProcurando.removerQuantidade(quant);
             this.exibir();
         } else {
             alert("Digite uma quantidade válida");
@@ -115,9 +121,9 @@ export class GerenciadordeProdutos {
         let precoInput = document.getElementById('preco');
 
         if(nomeInput instanceof HTMLInputElement && quantidadeInput instanceof HTMLInputElement && precoInput instanceof HTMLInputElement){
-            nomeInput.value = " ";
-            quantidadeInput.value = " ";
-            precoInput.value = " ";
+            nomeInput.value = "";
+            quantidadeInput.value = "";
+            precoInput.value = "";
         }
     }
 
