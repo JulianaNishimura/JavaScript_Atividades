@@ -1,20 +1,44 @@
 export default class Pedido{
-    #itens = [];
+    #nome;
+    #quantidade;
+    #preco;
 
-    constructor(itens = []){
-        this.#itens = itens;
+    constructor(nome,quantidade,preco){
+        this.#nome = nome;
+        this.#quantidade = quantidade;
+        this.#preco = preco;
     }
 
-    get itens(){
-        return this.#itens;
+    get nome(){
+        return this.#nome;
     }
 
-    set itens(itens){
-        this.#itens = itens;
+    set nome(nome){
+        this.#nome = nome;
+    }
+
+    get quantidade(){
+        return this.#nome;
+    }
+
+    set quantidade(quantidade){
+        this.#quantidade = quantidade;
+    }
+
+    get preco(){
+        return this.#preco;
+    }
+
+    set preco(preco){
+        this.#preco = preco;
+    }
+
+    total(){
+        return (this.#preco*this.#quantidade);
     }
 
     toString(){
-        return `itens: ${this.#itens}`
+        return `Item: ${this.#nome} | quantidade: ${this.#quantidade} | preço: ${this.#preco} | total: ${this.total().toFixed(2)}R$`
     }
 
 }
