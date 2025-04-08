@@ -28,8 +28,7 @@ export class GerenciadordeProdutos {
             if (quantidade < 0 || preco < 0) {
                 alert("Por favor insira uma quantidade ou preço válido.");
             } else {
-                let produto = new Produto(nome, quantidade, preco);
-                this.#produtos.push(produto);
+                this.#produtos.push(new Produto(nome, quantidade, preco));
                 console.log("Criou o produto");
                 this.exibir();
             }
