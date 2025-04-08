@@ -27,9 +27,11 @@ export class GerenciamentoPedido{
     }
 
     #calcularTotal(){
-        return this.#pedidos.reduce((total, pedido) => {
+        let totalPedido = this.#pedidos.reduce((total, pedido) => {
             return total + pedido.total();
         }, 0);
+
+        return totalPedido = totalPedido + (totalPedido*0.10)
     }
 
     #exibir(){
