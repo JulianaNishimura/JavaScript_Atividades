@@ -9,6 +9,7 @@ function exibirErro(mensagem){
     let saida = document.getElementById('saida');
     if(saida){
         saida.textContent = `Erro: ${mensagem}`
+        saida.style.color = 'red';
     }
 }
 
