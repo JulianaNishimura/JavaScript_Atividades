@@ -3,20 +3,28 @@ import Aluno from './Aluno.js';
 let aluno;
 
 function acrescentar(notaInput) {
-  let nota = Number(notaInput.value);
-
-  // Valida se o valor da nota é um número válido
-  // prettier-ignore
-  if (!isNaN(nota) && (nota >= 0) && (nota <= 10)) {
+  try {
+    let nota = parseFloat(notaInput.value);
+    if(isNaN(nota)){
+        throw new Error('Digite um número válido!');
+    }
+    if(nota < 0){
+        throw new Error('Digite um número maior ou igual a 0!');
+    }
+    if(nota > 10){
+        throw new Error('Digite um número menor ou igual a 10!');
+    }
     if (!aluno) {
-      alert('Por favor, insira o nome do aluno antes de adicionar notas.');
-      return;
+      throw new Error('Por favor, insira o nome do aluno antes de adicionar notas.');
+    }
+    if((aluno.notas.length === 3)){
+      throw new Error('Você já adicionou 3 notas.')
     }
     aluno.adicionarNota(nota); // Adiciona a nota usando o método da classe
     notaInput.value = '';
-    exibirConteudo(); // Exibe as notas atualizadas
-  } else {
-    alert('Digite uma nota válida entre 0 e 10.');
+    exibirConteudo();
+  } catch (error) {
+    alert(error.message);
   }
 }
 
@@ -48,9 +56,8 @@ function calcularMedia() {
   // forma explicita
   // if (aluno === null || aluno === undefined || (aluno.notas.length === 0))
   //prettier-ignore
-  if ((!aluno) || (!aluno.notas.length)) { //simplificação
-    alert('Adicione ao menos uma nota antes de calcular a média.');
-    return 0;
+  if ((!aluno) || (aluno.notas.length < 3)) { //simplificação
+    return alert('Adicione ao menos três notas antes de calcular a média.');
   }
   return aluno.calcularMedia();
 }

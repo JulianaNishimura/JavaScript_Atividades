@@ -15,22 +15,31 @@ export class GerenciadordeProdutos {
         let precoInput = document.getElementById('preco');
 
         if(nomeInput instanceof HTMLInputElement && quantidadeInput instanceof HTMLInputElement && precoInput instanceof HTMLInputElement){
-            let nome = nomeInput.value.trim();
-            let quantidade = parseInt(quantidadeInput.value);
-            let preco = parseFloat(precoInput.value);
-
-            let produtoExistente = this.#produtos.find(prod => prod.nome === nome);
-            if (produtoExistente) {
-                alert("Já existe um produto cadastrado com este nome!");
-                return;
-            }
-
-            if (quantidade < 0 || preco < 0) {
-                alert("Por favor insira uma quantidade ou preço válido.");
-            } else {
+            try {
+                let nome = nomeInput.value.trim();
+                let quantidade = parseInt(quantidadeInput.value);
+                let preco = parseFloat(precoInput.value);
+                if(nome === ""){
+                    throw new Error("Digite o nome do produto!")
+                }
+                if (isNaN(quantidade)) {
+                    throw new Error("Digite uma quantidade válida!")
+                }
+                if (isNaN(preco)) {
+                    throw new Error("Digite um preço válido!")
+                }
+                let produtoExistente = this.#produtos.find(prod => prod.nome === nome);
+                if (produtoExistente) {
+                    throw new Error("Já existe um produto cadastrado com este nome!")
+                }
+                if (quantidade < 0 || preco < 0) {
+                    throw new Error("Por favor insira uma quantidade ou preço válido.");
+                }
                 this.#produtos.push(new Produto(nome, quantidade, preco));
                 console.log("Criou o produto");
                 this.exibir();
+            } catch (error) {
+                alert(error.message);
             }
         }
     }
@@ -55,49 +64,46 @@ export class GerenciadordeProdutos {
     adicionaQuantidade() {
         let nomeInputAtualiza = document.getElementById('nomeAtualizar');
         let nome = nomeInputAtualiza.value.trim();
-    
-        if (this.#produtos.length === 0) {
-            alert("Nenhum produto cadastrado.");
-            return;
-        }
-    
-        let produtoProcurando = this.#produtos.find(p => p.nome === nome);
-        if (!produtoProcurando) {
-            alert("Produto não encontrado.");
-            return;
-        }
-    
-        let quant = parseInt(prompt("Digite a quantidade a adicionar:"));
-        if (quant >= 0) {
+
+        try {
+            if (this.#produtos.length === 0) {
+                throw new Error("Nenhum produto cadastrado.");
+            }
+            let produtoProcurando = this.#produtos.find(p => p.nome === nome);
+            if (!produtoProcurando) {
+                throw new Error("Produto não encontrado.");
+            }
+            let quant = parseInt(prompt("Digite a quantidade a adicionar:"));
+            if (quant < 0) {
+                throw new Error("Digite uma quantidade válida");
+            }
             produtoProcurando.adicionarQuantidade(quant);
             this.exibir();
-        } else {
-            alert("Digite uma quantidade válida");
+        } catch (error) {
+            alert(error.message);
         }
     }
     
     removeQuantidade() {
         let nomeInputAtualiza = document.getElementById('nomeAtualizar');
         let nome = nomeInputAtualiza.value.trim();
-    
-        if (this.#produtos.length === 0) {
-            alert("Nenhum produto cadastrado.");
-            return;
-        }
-    
-        let produtoProcurando = this.#produtos.find(p => p.nome === nome);
-        //filter, find, etc.
-        if (!produtoProcurando) {
-            alert("Produto não encontrado.");
-            return;
-        }
-    
-        let quant = parseInt(prompt("Digite a quantidade a remover:"));
-        if (quant >= 0 && quant <= produtoProcurando.quantidade) {
+
+        try {
+            if (this.#produtos.length === 0) {
+                throw new Error("Nenhum produto cadastrado.");
+            }
+            let produtoProcurando = this.#produtos.find(p => p.nome === nome);
+            if (!produtoProcurando) {
+                throw new Error("Produto não encontrado.");
+            }
+            let quant = parseInt(prompt("Digite a quantidade a remover:"));
+            if (quant < 0 || quant > produtoProcurando.quantidade) {
+                throw new Error("Digite uma quantidade válida");
+            }
             produtoProcurando.removerQuantidade(quant);
             this.exibir();
-        } else {
-            alert("Digite uma quantidade válida");
+        } catch (error) {
+            alert(error.message);
         }
     }
 

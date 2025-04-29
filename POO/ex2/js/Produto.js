@@ -36,11 +36,13 @@ export default class Produto {
     }
 
     #validarQuantidadeEpreco(quantOupreco){
-        if(quantOupreco < 0){
-            alert(`Preço ou quantidade inválida! Tem que ser maior ou igual a zero.`);
-            return false;
-        } else {
+        try {
+            if(quantOupreco < 0){
+                throw new Error(`Preço ou quantidade inválida! Tem que ser maior ou igual a zero.`)
+            }
             return true;
+        } catch (error) {
+            alert(error.message)
         }
     }
 
