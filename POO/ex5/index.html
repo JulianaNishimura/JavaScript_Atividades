@@ -1,20 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>Lista de tarefas: </h2>
-    <label for="titulo">Nome da tarefa: </label>
-    <input type="text" name="titulo" id="titulo">
-    <label for="data">Data da tarefa: </label>
-    <input type="text" name="data" id="data">
-    <label for="descricao">Descrição da tarefa: </label>
-    <input type="text" name="descricao" id="descricao">
-    <button id="adicionar">Adicionar tarefa</button>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Tarefas</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f4f9;
+        padding: 40px 20px;
+        display: flex;
+        justify-content: center;
+      }
 
-    <div id="tarefas"></div>
-</body>
+      .container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+      }
+
+      h2 {
+        color: #333;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      label {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+
+      #adicionar {
+        margin-top: 20px;
+        width: 100%;
+        padding: 12px;
+        background-color: #28a745;
+        color: white;
+        font-weight: bold;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      #adicionar:hover {
+        background-color: #218838;
+      }
+
+      #tarefas {
+        margin-top: 30px;
+      }
+
+      .tarefa-item {
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-left: 5px solid #007bff;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        margin-bottom: 15px;
+      }
+
+      .tarefa-texto {
+        white-space: pre-line;
+        margin-bottom: 10px;
+        color: #333;
+        font-size: 0.95rem;
+      }
+
+      .botoes {
+        display: flex;
+        gap: 10px;
+      }
+
+      .botoes button {
+        flex: 1;
+        padding: 8px 0;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.85rem;
+        transition: background-color 0.2s;
+      }
+
+      .botoes button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+    <script type="module" src="js/GerenciaTarefa.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Lista de tarefas:</h2>
+      <label for="titulo">Nome da tarefa:</label>
+      <input type="text" name="titulo" id="titulo" />
+
+      <label for="data">Data da tarefa:</label>
+      <input type="text" name="data" id="data" />
+
+      <label for="descricao">Descrição da tarefa:</label>
+      <input type="text" name="descricao" id="descricao" />
+
+      <button id="adicionar">Adicionar tarefa</button>
+
+      <div id="tarefas"></div>
+    </div>
+  </body>
 </html>
