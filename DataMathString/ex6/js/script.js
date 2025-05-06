@@ -1,3 +1,5 @@
+//flatpickr - ver depois
+
 function verificar(data){
     let dataEmLista = data.split("-");
     let dia = parseInt(dataEmLista[2]);
