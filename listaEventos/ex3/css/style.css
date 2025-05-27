@@ -1,0 +1,103 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+.conteudo {
+  flex: 1;
+  flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #333;
+  padding-top: 10px;
+}
+
+.btnDropdown {
+  position: relative;
+}
+
+.menu a, .btnDropdown {
+  padding: 6px 0px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #ccc;
+  background: none;
+  width: 8%;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.menu a:hover, .btnDropdown:hover {
+  color: #fff;
+  background-color: #201e1e;
+}
+
+.principal {
+  float: left;
+  background-color: white;
+  width: 79%;
+  margin-left: 10px;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.alinhamentoTexto {
+  margin-top: 30px;
+  text-align: justify;
+}
+
+.menuDropdown {
+  display: none;
+}
+
+.exibir {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 24%;
+  z-index: 1;
+  background-color: #232323;
+  color: #fff;
+  padding: 10px 50px; 
+  width: max-content;
+  white-space: nowrap;
+}
+
+.linha {
+  display: flex;
+  flex-direction: row;
+  background-color: #333;
+}
+
+@media screen and (max-width: 700px) {
+  .menu, .principal {
+    width: 100%;
+    margin: 6px 0;
+  }
+}

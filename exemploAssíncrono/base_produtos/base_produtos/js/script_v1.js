@@ -6,23 +6,3 @@ let produtos = [
     { nome: 'Teclado', diretorio: 'teclado', textoDescritivo: 'Teclado Mecânico Gamer Phantom, ABNT2 - Preto', imagens: ['01.jpg', '02.jpg', '03.jpg'] },
   ];
 
-function inicializarProdutos() {
-  let containerPrincipal = document.getElementById('produtos');
-
-}
-
-function criarContainerProduto(){
-  let divProduto 
-}
-
-function criarQuadro(produto) {
-  let quadro = document.createElement('div');
-  
-  produto.imagens.forEach((item) => {
-    let imagem = document.createElement('img');
-    imagem.src = `img/${produto.diretorio}/${item}`
-    quadro.appendChild(imagem);
-  });
-
-  return quadro;
-}
