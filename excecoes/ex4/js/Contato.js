@@ -1,35 +1,53 @@
-export default class Contato{
-    #nome;
-    #telefone;
-    #email;
+export default class Contato {
+  #nome;
+  #telefone;
+  #email;
 
-    constructor(nome,telefone,email){
-        this.#nome = nome;
-        this.#telefone = telefone;
-        this.#email = email;
+  constructor(nome, telefone, email) {
+    this.validarNome(nome);
+    this.validarTelefone(telefone);
+    this.validarEmail(email);
+
+    this.#nome = nome;
+    this.#telefone = telefone;
+    this.#email = email;
+  }
+
+  get nome() {
+    return this.#nome;
+  }
+
+  get telefone() {
+    return this.#telefone;
+  }
+
+  get email() {
+    return this.#email;
+  }
+
+
+  validarNome(nome) {
+    if (typeof nome !== "string" || !nome.trim().match(/^[A-Za-zÀ-ÿ\s]+$/)) {
+        throw new Error("O nome deve conter apenas letras e não pode ser vazio.");
+    }
+  }
+  
+  validarTelefone(telefone) {
+    if (typeof telefone !== 'string') {
+        throw new Error('O telefone deve ser uma string.');
     }
 
-    get nome(){
-        return this.#nome;
-    }
+    const somenteNumeros = telefone.replace(/\D/g, ''); // remove tudo que não é número
 
-    set nome(nome){
-        this.#nome = nome;
+    if (!somenteNumeros.match(/^\d{10,11}$/)) {
+        throw new Error('O telefone deve conter entre 10 e 11 dígitos numéricos.');
     }
+  }
 
-    get telefone(){
-        return this.#telefone;
+  validarEmail(email) {
+    const regexEmail = /^[^\s@]+@[^\s@]+\.(com|com\.br|org)$/i;
+    if (typeof email !== 'string' || !regexEmail.test(email)) {
+        throw new Error("O e-mail deve ser válido e terminar com '.com', '.com.br' ou '.org'.");
     }
-
-    set telefone(telefone){
-        this.#telefone = telefone;
-    }
-
-    get email(){
-        return this.#email;
-    }
-
-    set email(email){
-        this.#email = email;
-    }
+  }
 }
